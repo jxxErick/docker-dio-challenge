@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  web:
+    image: httpd:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/usr/local/apache2/htdocs/
+    networks:
+      - my_network
+
+  calculator:
+    build: ./calculator
+    ports:
+      - "3000:3000"
+    networks:
+      - my_network
+
+networks:
+  my_network:
